@@ -30,8 +30,8 @@ class MessageType:
     FIGURE = "figure"  # 그림 메시지
     CODE = "code"  # 코드 메시지
     DATAFRAME = "dataframe"  # 데이터프레임 메시지
-
-
+ 
+    
 # 메시지 관련 함수
 def print_messages():
     """
