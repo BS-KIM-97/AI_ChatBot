@@ -223,3 +223,18 @@ https://wikidocs.net/book/14314
 -모두의 AI
 https://www.youtube.com/@AI-km1yn
 
+| Resource       | Link                       |
+|----------------|----------------------------|
+| 강사님 GitHub  | [GitHub]([https://github.com](https://github.com/good593)) |
+| LangChain 공식 홈페이지 | [Read Docs](https://docs.github.com) |
+| 테디 노트    | [youtube](https://www.youtube.com/@teddynote) |
+| 테디 노트    | [wikidocs](https://wikidocs.net/book/14314) |
+| 모두의 AI    | [youtube](https://www.youtube.com/@AI-km1yn) |
+
+
+
+
+
+
+
+
