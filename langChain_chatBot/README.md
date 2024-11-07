@@ -210,6 +210,9 @@ Feel free to reach out for collaboration or questions! 😊
 
 ## 참고자료
 
+-선생님 GitHub
+https://github.com/good593
+
 -LangChain 공식 홈페이지
 https://python.langchain.com/docs/integrations/document_loaders/#social-platforms
 
