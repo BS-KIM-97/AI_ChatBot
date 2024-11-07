@@ -123,5 +123,6 @@ fna_prompt = PromptTemplate.from_template(
     Final Review: Ensure the response is clear, essential, and directly addresses the question.
     Return the Answer: Provide the summarized response to the user, including any additional information or links as needed.
 """
+
     
 )
