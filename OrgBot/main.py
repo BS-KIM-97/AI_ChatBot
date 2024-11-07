@@ -1,25 +1,19 @@
 
 # 모듈
 import os
-from typing import List, Union
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain_experimental.tools import PythonAstREPLTool
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from Modules import logging
-from Modules.messages import AgentStreamParser, AgentCallbacks
 from dotenv import load_dotenv
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-from Modules import call
 from Modules.call import ask
 from Modules.call import print_messages
 from Modules.agent import create_agent
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.docstore.in_memory import InMemoryDocstore
-import faiss
 from langchain_community.vectorstores import FAISS
-from langchain_community.document_loaders.csv_loader import CSVLoader
+from langchain.schema import Document
 
 
 # env
@@ -75,7 +69,13 @@ print_messages()  # 저장된 메시지 출력
 user_input = st.chat_input("궁금한 내용을 물어보세요!")  # 사용자 입력 받기
 if user_input:
     ask(user_input)  # 사용자 질문 처리
-    
+
+
+#파일 저장 로직
+
+#디렉토리 확인
+directory = "C:\WorkSpace\AI_ChatBot\OrgBot"
+folder_name = "faiss_db"
 
 #파일 확인 함수
 def check_folder_exists(directory, folder_name):
@@ -92,36 +92,29 @@ def check_folder_exists(directory, folder_name):
     folder_path = os.path.join(directory, folder_name)
     return os.path.isdir(folder_path)
 
-#디렉토리 확인
-directory = "C:\WorkSpace\AI_ChatBot\OrgBot"
-folder_name = "faiss_db"
 
-
-
+# 파일 저장
 if save_btn and uploaded_file:
+    df = pd.read_csv(uploaded_file)
+    db = [
+        Document(page_content=row.to_string(), metadata={"index": idx})
+        for idx, row in df.iterrows()
+    ]
+     
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000,
         chunk_overlap=100,
     )
     
-    loader = CSVLoader(file_path=uploaded_file, encoding='utf-8')
-    
-    documents = loader.load()
-    
-    splitted_data = text_splitter.split_documents(loaded_data)
+    splitted_data = text_splitter.split_documents(db)
     
     db = FAISS.from_documents(documents=splitted_data, embedding=embeddings)
     
     if check_folder_exists(directory, folder_name):
         print(f"폴더 '{folder_name}'가 존재합니다.")
-        db.add_documents()
+        db.add_documents(db)
     else:
-        db = FAISS(
-            embedding_function=embeddings,
-            index=faiss.IndexFlatL2(dimension_size),
-            docstore=InMemoryDocstore(),
-            index_to_docstore_id={},
-        )
+        db.save_local(folder_path="faiss_db", index_name="faiss_index")
         print(f"폴더 '{folder_name}'가 존재하지 않아 생성 후 저장합니다.")
         
 
