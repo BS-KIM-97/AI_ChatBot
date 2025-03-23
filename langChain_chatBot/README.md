@@ -1,8 +1,8 @@
-### GitHub README.md: Blog Agent ChatBot 💬
+### GitHub README.md: Agent ChatBot 💬
 
 ---
 
-# Blog Agent ChatBot 💬
+# Agent ChatBot 💬
 
 ### 📖 Introduction
 **Blog Agent ChatBot**은 Streamlit 기반의 웹 애플리케이션으로, 사용자가 업로드한 CSV 데이터를 분석하고 자연어 질문에 답변할 수 있도록 설계된 대화형 챗봇입니다. LangChain 및 OpenAI API를 활용하여 데이터 분석, 임베딩, 벡터 검색, 질의응답 기능을 제공합니다.
