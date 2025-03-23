@@ -194,19 +194,6 @@ if save_btn and uploaded_file:
 
 ---
 
-## 🛡️ License
-
-This project is licensed under the MIT License.
-
----
-
-## 📝 Authors
-
-- **Your Name**  
-  *AI Enthusiast and Developer*  
-
-Feel free to reach out for collaboration or questions! 😊
-
 
 ## 참고자료
 
